@@ -4,20 +4,36 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 import { siteConfig, getContactLink, getFormattedPhone } from '../config/site.config';
 
+// Extend Window interface for tracking scripts
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+    fbq?: (...args: any[]) => void;
+  }
+}
+
 export default function ThankYouPage() {
   useEffect(() => {
-    // Google Analytics conversion tracking
+    // Google Analytics conversion tracking (only if gtag is available)
     if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'conversion', {
-        'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL', // Replace with your Google Ads conversion ID
-        'value': 1.0,
-        'currency': 'BGN'
-      });
+      try {
+        window.gtag('event', 'conversion', {
+          'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL', // Replace with your Google Ads conversion ID
+          'value': 1.0,
+          'currency': 'BGN'
+        });
+      } catch (error) {
+        console.log('Google Analytics tracking error:', error);
+      }
     }
 
-    // Facebook Pixel conversion tracking
+    // Facebook Pixel conversion tracking (only if fbq is available)
     if (typeof window !== 'undefined' && window.fbq) {
-      window.fbq('track', 'Lead');
+      try {
+        window.fbq('track', 'Lead');
+      } catch (error) {
+        console.log('Facebook Pixel tracking error:', error);
+      }
     }
   }, []);
 
