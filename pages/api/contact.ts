@@ -49,7 +49,7 @@ export default async function handler(
     }
 
     // Create nodemailer transporter for Referati.website domain email
-    const transporter = nodemailer.createTransporter({
+    const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST, // mail.referati.website
       port: parseInt(process.env.SMTP_PORT || '465'),
       secure: true, // true for port 465 (SSL/TLS)
