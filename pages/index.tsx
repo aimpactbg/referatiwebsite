@@ -13,7 +13,7 @@ import Guarantees from '../components/Guarantees';
 import Pricing from '../components/Pricing';
 import Urgency from '../components/Urgency';
 import FAQ from '../components/FAQ';
-// import FinalCTA from '../components/FinalCTA';  // TEMPORARILY COMMENTED OUT
+import FinalCTA from '../components/FinalCTA';
 import Footer from '../components/Footer';
 import FloatingContactFab from '../components/FloatingContactFab';
 
@@ -75,55 +75,7 @@ export default function HomePage() {
           <Pricing />
           <Urgency />
           <FAQ />
-
-          {/* <FinalCTA /> */}
-
-          {/* === ТЕСТОВА КОНТАКТ СЕКЦИЯ === */}
-          <section id="contact" className="bg-blue-600 text-white py-20">
-            <div className="container mx-auto px-4 text-center">
-              <h2 className="text-4xl font-bold mb-8">
-                🔧 ТЕСТ - Контакт секцията работи!
-              </h2>
-              <p className="text-xl mb-8">
-                Ако виждате това, значи секцията се зарежда правилно.
-              </p>
-
-              <div className="space-y-4">
-                <div>
-                  <a 
-                    href="tel:+359000000000" 
-                    className="inline-block bg-white text-blue-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-colors"
-                  >
-                    📞 ОБАДЕТЕ СЕ: +359 000 000 000
-                  </a>
-                </div>
-
-                <div>
-                  <a 
-                    href="mailto:info@referati.website"
-                    className="inline-block bg-green-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-green-600 transition-colors"
-                  >
-                    ✉️ ИМЕЙЛ: info@referati.website
-                  </a>
-                </div>
-
-                <div>
-                  <a 
-                    href="viber://chat?number=+359000000000"
-                    className="inline-block bg-purple-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-purple-600 transition-colors"
-                  >
-                    💬 VIBER ЧАТ
-                  </a>
-                </div>
-              </div>
-
-              <p className="mt-8 text-lg">
-                📍 Ако това се вижда, проблемът е в оригиналния FinalCTA компонент
-              </p>
-            </div>
-          </section>
-          {/* === КРАЙ НА ТЕСТОВАТА СЕКЦИЯ === */}
-
+          <FinalCTA />
         </main>
 
         <Footer />
