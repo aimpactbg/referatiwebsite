@@ -19,7 +19,7 @@ export default function FinalCTA() {
           {/* Quick Stats */}
           <div className="flex flex-wrap justify-center gap-8 mb-12">
             <div className="text-center">
-              <div className="text-3xl font-bold text-yellow-300">{siteConfig.stats.projectsCompleted}+</div>
+              <div className="text-3xl font-bold text-yellow-300">{siteConfig.stats.completedProjects}+</div>
               <div className="text-blue-200">Завършени проекта</div>
             </div>
             <div className="text-center">
