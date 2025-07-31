@@ -1,4 +1,4 @@
-// components/FinalCTA.tsx - REBUILT VERSION
+// components/FinalCTA.tsx - FIXED VERSION without unescaped quotes
 'use client';
 import { siteConfig, getContactLink, getFormattedPhone, getMainEmail } from '../config/site.config';
 
@@ -13,7 +13,7 @@ export default function FinalCTA() {
           </h2>
 
           <p className="text-xl mb-8 text-blue-100">
-            "Докато четеш това, десетки студенти вече получиха нашата помощ и спестиха си стотици часове стрес. Присъедини се към тях!"
+            Докато четеш това, десетки студенти вече получиха нашата помощ и спестиха си стотици часове стрес. Присъедини се към тях!
           </p>
 
           {/* Quick Stats */}
