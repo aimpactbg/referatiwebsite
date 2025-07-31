@@ -32,17 +32,17 @@ export default function Trust() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
           {/* Testimonial 1 */}
           <div className="bg-gray-50 p-8 rounded-lg shadow-md">
-            <p className="text-gray-700 italic mb-4">"Получих курсовата си работа точно навреме и с отлично качество. Професионалният подход и комуникацията бяха на високо ниво."</p>
+            <p className="text-gray-700 italic mb-4">&ldquo;Получих курсовата си работа точно навреме и с отлично качество. Професионалният подход и комуникацията бяха на високо ниво.&rdquo;</p>
             <p className="font-bold text-gray-900">— Мария С., студентка по икономика</p>
           </div>
           {/* Testimonial 2 */}
           <div className="bg-gray-50 p-8 rounded-lg shadow-md">
-            <p className="text-gray-700 italic mb-4">"Много съм доволен от дипломната си работа. Авторът разбра точно какво искам и резултатът надмина очакванията ми."</p>
+            <p className="text-gray-700 italic mb-4">&ldquo;Много съм доволен от дипломната си работа. Авторът разбра точно какво искам и резултатът надмина очакванията ми.&rdquo;</p>
             <p className="font-bold text-gray-900">— Георги М., магистър по право</p>
           </div>
           {/* Testimonial 3 */}
           <div className="bg-gray-50 p-8 rounded-lg shadow-md">
-            <p className="text-gray-700 italic mb-4">"Бърза доставка, качествено изпълнение и много добра цена. Определено ще препоръчам на колегите си."</p>
+            <p className="text-gray-700 italic mb-4">&ldquo;Бърза доставка, качествено изпълнение и много добра цена. Определено ще препоръчам на колегите си.&rdquo;</p>
             <p className="font-bold text-gray-900">— Анна К., студентка по медицина</p>
           </div>
         </div>
