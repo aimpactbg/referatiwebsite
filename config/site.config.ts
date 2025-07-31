@@ -14,7 +14,9 @@ export const siteConfig = {
       link: "tel:+359000000000"
     },
     email: {
-      orders: "order@referati.website"
+      main: "info@referati.website",
+      support: "support@referati.website",
+      orders: "orders@referati.website"
     },
     social: {
       viber: "viber://chat?number=+359000000000",
@@ -326,7 +328,7 @@ export const getContactLink = (type: 'phone' | 'email' | 'whatsapp' | 'viber' | 
     case 'phone':
       return config.phone.link;
     case 'email': 
-      return `mailto:${config.email.main}`;
+      return `mailto:${config.email.orders}`;
     case 'whatsapp':
       return config.social.whatsapp;
     case 'viber':
