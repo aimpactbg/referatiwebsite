@@ -61,10 +61,10 @@ export default function FloatingContactFab() {
 
   return (
     <>
-      {/* DARKER Backdrop - 100% черно с леко прозрачност */}
+      {/* 70% BLACK Backdrop - не 100% черно */}
       {isOpen && (
         <div 
-          className="fixed inset-0 bg-black bg-opacity-70 z-40 backdrop-blur-sm"
+          className="fixed inset-0 bg-black bg-opacity-70 z-40"
           onClick={() => setIsOpen(false)}
         />
       )}
@@ -104,7 +104,7 @@ export default function FloatingContactFab() {
           ))}
         </div>
 
-        {/* Main FAB Button */}
+        {/* Main FAB Button - NO PULSE ANIMATION */}
         <button
           onClick={toggleFab}
           className={`w-14 h-14 rounded-full shadow-lg hover:shadow-xl transform transition-all duration-300 flex items-center justify-center text-white font-bold text-lg ${
@@ -116,11 +116,6 @@ export default function FloatingContactFab() {
         >
           {isOpen ? '✕' : '📞'}
         </button>
-
-        {/* Pulse Animation for Main Button */}
-        {!isOpen && (
-          <div className="absolute inset-0 w-14 h-14 rounded-full bg-blue-600 opacity-30 animate-ping"></div>
-        )}
 
         {/* Notification Badge */}
         {!isOpen && (
