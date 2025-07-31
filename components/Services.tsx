@@ -1,88 +1,235 @@
-// File: components/Services.tsx
-// This component details the services offered, including main services, extras, and included features.
+// components/Services.tsx
+import { siteConfig } from '../config/site.config';
 
 export default function Services() {
   return (
-    <section id="services" className="bg-white py-20 lg:py-24">
+    <section id="services" className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-extrabold text-gray-900">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
             Какво можем да изготвим за теб?
           </h2>
-          <p className="mt-4 text-lg text-gray-600">От кратки есета до цялостни дипломни работи.</p>
+          <p className="text-xl text-gray-600">
+            От кратки есета до цялостни дипломни работи.
+          </p>
         </div>
 
-        {/* Main Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {/* Service Card 1: Referati */}
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-8 shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
-            <div className="text-5xl mb-4">📄</div>
-            <h3 className="text-2xl font-bold mb-2">Реферати и есета</h3>
-            <ul className="text-gray-600 space-y-2 text-left">
-              <li><strong>Обем:</strong> 3-15 страници</li>
-              <li><strong>Срок:</strong> От 24 часа</li>
-              <li><strong>Цена:</strong> От 15 лв./страница</li>
-            </ul>
-            <p className="mt-4 text-sm text-gray-500">Идеални за семинарни упражнения и текущи задачи.</p>
+        {/* Services Grid */}
+        <div className="grid lg:grid-cols-3 gap-8 mb-12">
+          {/* Реферати и есета */}
+          <div className="bg-gray-50 rounded-lg p-8 text-center hover:shadow-lg transition-shadow">
+            <div className="text-5xl mb-6">📄</div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              {siteConfig.services.referati.name}
+            </h3>
+
+            <div className="space-y-3 mb-6">
+              <div className="flex justify-between items-center">
+                <span className="text-gray-600">Обем:</span>
+                <span className="font-semibold">{siteConfig.services.referati.pages}</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-gray-600">Срок:</span>
+                <span className="font-semibold">{siteConfig.services.referati.delivery}</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-gray-600">Цена:</span>
+                <span className="font-semibold text-blue-600">{siteConfig.services.referati.priceFrom}</span>
+              </div>
+            </div>
+
+            <p className="text-gray-600 mb-6">
+              Идеални за семинарни упражнения и текущи задачи.
+            </p>
+
+            <div className="border-t pt-4">
+              <h4 className="font-semibold mb-3">Включва:</h4>
+              <ul className="text-sm text-left space-y-2">
+                <li className="flex items-center">
+                  <span className="text-green-500 mr-2">✓</span>
+                  {siteConfig.guarantees[0]}
+                </li>
+                <li className="flex items-center">
+                  <span className="text-green-500 mr-2">✓</span>
+                  {siteConfig.guarantees[3]}
+                </li>
+                <li className="flex items-center">
+                  <span className="text-green-500 mr-2">✓</span>
+                  Правилно форматиране
+                </li>
+                <li className="flex items-center">
+                  <span className="text-green-500 mr-2">✓</span>
+                  Актуални източници
+                </li>
+              </ul>
+            </div>
           </div>
 
-          {/* Service Card 2: Kursovi Raboti */}
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-8 shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
-            <div className="text-5xl mb-4">📚</div>
-            <h3 className="text-2xl font-bold mb-2">Курсови работи</h3>
-            <ul className="text-gray-600 space-y-2 text-left">
-              <li><strong>Обем:</strong> 15-30 страници</li>
-              <li><strong>Срок:</strong> От 3 дни</li>
-              <li><strong>Цена:</strong> От 18 лв./страница</li>
-            </ul>
-            <p className="mt-4 text-sm text-gray-500">Задълбочени изследвания с анализ и препоръки.</p>
+          {/* Курсови работи */}
+          <div className="bg-blue-50 rounded-lg p-8 text-center hover:shadow-lg transition-shadow border-2 border-blue-200">
+            <div className="text-5xl mb-6">📚</div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              {siteConfig.services.kursovi.name}
+            </h3>
+
+            <div className="space-y-3 mb-6">
+              <div className="flex justify-between items-center">
+                <span className="text-gray-600">Обем:</span>
+                <span className="font-semibold">{siteConfig.services.kursovi.pages}</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-gray-600">Срок:</span>
+                <span className="font-semibold">{siteConfig.services.kursovi.delivery}</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-gray-600">Цена:</span>
+                <span className="font-semibold text-blue-600">{siteConfig.services.kursovi.priceFrom}</span>
+              </div>
+            </div>
+
+            <p className="text-gray-600 mb-6">
+              Задълбочени изследвания с анализ и препоръки.
+            </p>
+
+            <div className="border-t pt-4">
+              <h4 className="font-semibold mb-3">Включва:</h4>
+              <ul className="text-sm text-left space-y-2">
+                <li className="flex items-center">
+                  <span className="text-green-500 mr-2">✓</span>
+                  Всичко от реферати
+                </li>
+                <li className="flex items-center">
+                  <span className="text-green-500 mr-2">✓</span>
+                  Задълбочен анализ
+                </li>
+                <li className="flex items-center">
+                  <span className="text-green-500 mr-2">✓</span>
+                  Графики и таблици
+                </li>
+                <li className="flex items-center">
+                  <span className="text-green-500 mr-2">✓</span>
+                  Практически препоръки
+                </li>
+              </ul>
+            </div>
           </div>
 
-          {/* Service Card 3: Diplomni Raboti */}
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-8 shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
-            <div className="text-5xl mb-4">🎓</div>
-            <h3 className="text-2xl font-bold mb-2">Дипломни работи</h3>
-            <ul className="text-gray-600 space-y-2 text-left">
-              <li><strong>Обем:</strong> 40-80+ страници</li>
-              <li><strong>Срок:</strong> От 2 седмици</li>
-              <li><strong>Цена:</strong> От 20 лв./страница</li>
-            </ul>
-            <p className="mt-4 text-sm text-gray-500">Пълни научни изследвания с оригинални заключения.</p>
-          </div>
-        </div>
+          {/* Дипломни работи */}
+          <div className="bg-purple-50 rounded-lg p-8 text-center hover:shadow-lg transition-shadow border-2 border-purple-200">
+            <div className="text-5xl mb-6">🎓</div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              {siteConfig.services.diplomni.name}
+            </h3>
 
-        {/* Additional Services & Inclusions */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-          <div className="bg-blue-50 p-6 rounded-lg">
-            <h4 className="text-xl font-bold mb-4 text-gray-800">Всички услуги включват:</h4>
-            <ul className="space-y-2">
-              <li className="flex items-center"><svg className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path></svg>Безплатни корекции</li>
-              <li className="flex items-center"><svg className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path></svg>Проверка за оригиналност</li>
-              <li className="flex items-center"><svg className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path></svg>Правилно форматиране</li>
-              <li className="flex items-center"><svg className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path></svg>Актуални източници</li>
-              <li className="flex items-center"><svg className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path></svg>24/7 поддръжка</li>
-            </ul>
-          </div>
-          <div className="bg-blue-50 p-6 rounded-lg">
-            <h4 className="text-xl font-bold mb-4 text-gray-800">Други услуги и специалности:</h4>
-            <p className="text-gray-700 mb-4">Презентации, проекти, бизнес планове, казуси, преводи, редакция, набор и форматиране.</p>
-            <h4 className="text-lg font-semibold mb-2 text-gray-800">Работим във всички специалности:</h4>
-            <div className="flex flex-wrap gap-2">
-                <span className="bg-blue-200 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Икономика</span>
-                <span className="bg-blue-200 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Право</span>
-                <span className="bg-blue-200 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Медицина</span>
-                <span className="bg-blue-200 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Техника</span>
-                <span className="bg-blue-200 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Хуманитарни науки</span>
+            <div className="space-y-3 mb-6">
+              <div className="flex justify-between items-center">
+                <span className="text-gray-600">Обем:</span>
+                <span className="font-semibold">{siteConfig.services.diplomni.pages}</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-gray-600">Срок:</span>
+                <span className="font-semibold">{siteConfig.services.diplomni.delivery}</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-gray-600">Цена:</span>
+                <span className="font-semibold text-blue-600">{siteConfig.services.diplomni.priceFrom}</span>
+              </div>
+            </div>
+
+            <p className="text-gray-600 mb-6">
+              Пълни научни изследвания с оригинални заключения.
+            </p>
+
+            <div className="border-t pt-4">
+              <h4 className="font-semibold mb-3">Включва:</h4>
+              <ul className="text-sm text-left space-y-2">
+                <li className="flex items-center">
+                  <span className="text-green-500 mr-2">✓</span>
+                  Пълно научно изследване
+                </li>
+                <li className="flex items-center">
+                  <span className="text-green-500 mr-2">✓</span>
+                  Презентация БЕЗПЛАТНО
+                </li>
+                <li className="flex items-center">
+                  <span className="text-green-500 mr-2">✓</span>
+                  6 месеца поддръжка
+                </li>
+                <li className="flex items-center">
+                  <span className="text-green-500 mr-2">✓</span>
+                  Помощ за защитата
+                </li>
+              </ul>
             </div>
           </div>
         </div>
 
-        {/* Section CTA */}
-        <div className="text-center">
-            <p className="text-lg text-gray-700 mb-4">&ldquo;Не виждаш нужната ти услуга? Свържи се с нас - можем да помогнем с всякакъв вид академична работа!&rdquo;</p>
-            <a href="#pricing" className="text-blue-600 font-bold hover:underline">Виж всички услуги и цени →</a>
+        {/* All services include */}
+        <div className="bg-green-50 rounded-lg p-8 mb-8">
+          <h3 className="text-2xl font-bold text-center mb-6">Всички услуги включват:</h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {siteConfig.guarantees.map((guarantee, index) => (
+              <div key={index} className="flex items-center">
+                <span className="text-green-500 mr-2">✓</span>
+                <span>{guarantee}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
+        {/* Additional services */}
+        <div className="text-center mb-8">
+          <h3 className="text-2xl font-bold text-gray-900 mb-6">
+            Други услуги и специалности:
+          </h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 text-center">
+            {[
+              { icon: "📊", name: "Презентации" },
+              { icon: "📋", name: "Проекти" },
+              { icon: "💼", name: "Бизнес планове" },
+              { icon: "🔍", name: "Казуси" },
+              { icon: "🌐", name: "Преводи" },
+              { icon: "✏️", name: "Редакция" },
+              { icon: "⌨️", name: "Набор" },
+              { icon: "🎨", name: "Форматиране" }
+            ].map((service, index) => (
+              <div key={index} className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                <div className="text-3xl mb-2">{service.icon}</div>
+                <div className="font-medium">{service.name}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Specialties */}
+        <div className="bg-gray-50 rounded-lg p-8 text-center">
+          <h4 className="text-xl font-bold mb-4">Работим във всички специалности:</h4>
+          <div className="flex flex-wrap justify-center gap-3">
+            {[
+              "Икономика", "Право", "Медицина", "Инженерство", "Педагогика", 
+              "Психология", "Социология", "История", "Филология", "Математика",
+              "Физика", "Химия", "Биология", "География", "Философия"
+            ].map((specialty, index) => (
+              <span key={index} className="bg-white px-3 py-1 rounded-full text-sm font-medium border">
+                {specialty}
+              </span>
+            ))}
+          </div>
+          <p className="mt-4 text-gray-600">
+            "Не виждаш нужната ти услуга? Свържи се с нас - можем да помогнем с всякакъв вид академична работа!"
+          </p>
+        </div>
+
+        {/* CTA */}
+        <div className="text-center mt-8">
+          <a 
+            href="#pricing" 
+            className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all transform hover:scale-105"
+          >
+            Виж всички услуги и цени →
+          </a>
+        </div>
       </div>
     </section>
   );
