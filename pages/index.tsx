@@ -1,4 +1,4 @@
-// pages/index.tsx - Updated with FloatingContactFab
+// pages/index.tsx - FIXED VERSION with Test Contact Section
 import Head from 'next/head';
 import { seoConfig } from '../config/seo.config';
 
@@ -13,9 +13,9 @@ import Guarantees from '../components/Guarantees';
 import Pricing from '../components/Pricing';
 import Urgency from '../components/Urgency';
 import FAQ from '../components/FAQ';
-// import FinalCTA from '../components/FinalCTA';
+// import FinalCTA from '../components/FinalCTA';  // TEMPORARILY COMMENTED OUT
 import Footer from '../components/Footer';
-import FloatingContactFab from '../components/FloatingContactFab'; // NEW!
+import FloatingContactFab from '../components/FloatingContactFab';
 
 export default function HomePage() {
   return (
@@ -75,10 +75,10 @@ export default function HomePage() {
           <Pricing />
           <Urgency />
           <FAQ />
-          {/* <FinalCTA /> */}
-          <FAQ />
 
-          {/* === ТЕСТОВА КОНТАКТ СЕКЦИЯ - ЗАПОЧВА ТУК === */}
+          {/* <FinalCTA /> */}
+
+          {/* === ТЕСТОВА КОНТАКТ СЕКЦИЯ === */}
           <section id="contact" className="bg-blue-600 text-white py-20">
             <div className="container mx-auto px-4 text-center">
               <h2 className="text-4xl font-bold mb-8">
@@ -122,9 +122,8 @@ export default function HomePage() {
               </p>
             </div>
           </section>
-          {/* === ТЕСТОВА КОНТАКТ СЕКЦИЯ - СВЪРШВА ТУК === */}
+          {/* === КРАЙ НА ТЕСТОВАТА СЕКЦИЯ === */}
 
-          </main>
         </main>
 
         <Footer />
