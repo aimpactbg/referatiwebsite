@@ -1,5 +1,6 @@
 // pages/thank-you.tsx - Thank You Page for Conversion Tracking
 import Head from 'next/head';
+import Link from 'next/link';
 import { useEffect } from 'react';
 import { siteConfig, getContactLink, getFormattedPhone } from '../config/site.config';
 
@@ -133,19 +134,19 @@ export default function ThankYouPage() {
 
             {/* Navigation */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
+              <Link
                 href="/"
                 className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-bold transition-colors"
               >
                 ← Обратно към началото
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/#services"
                 className="bg-gray-600 hover:bg-gray-700 text-white px-8 py-3 rounded-lg font-bold transition-colors"
               >
                 Вижте всички услуги
-              </a>
+              </Link>
             </div>
           </div>
 
