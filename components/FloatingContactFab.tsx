@@ -1,4 +1,4 @@
-// components/FloatingContactFab.tsx - Multi-Action Floating Contact Button
+// components/FloatingContactFab.tsx - Left Position + Darker Backdrop
 'use client';
 import { useState, useEffect } from 'react';
 import { siteConfig, getContactLink, getFormattedPhone, getMainEmail } from '../config/site.config';
@@ -61,16 +61,16 @@ export default function FloatingContactFab() {
 
   return (
     <>
-      {/* Backdrop */}
+      {/* DARKER Backdrop - 100% черно с леко прозрачност */}
       {isOpen && (
         <div 
-          className="fixed inset-0 bg-black bg-opacity-20 z-40"
+          className="fixed inset-0 bg-black bg-opacity-70 z-40 backdrop-blur-sm"
           onClick={() => setIsOpen(false)}
         />
       )}
 
-      {/* Floating Action Button Container */}
-      <div className="fixed bottom-6 right-6 z-50">
+      {/* Floating Action Button Container - MOVED TO LEFT */}
+      <div className="fixed bottom-6 left-6 z-50">
         {/* Contact Options */}
         <div className={`space-y-3 mb-4 transition-all duration-300 ${
           isOpen ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-4 pointer-events-none'
@@ -93,9 +93,11 @@ export default function FloatingContactFab() {
                 <span className="text-lg mr-2">{option.icon}</span>
                 <span className="font-medium text-sm">{option.display}</span>
 
-                {/* Tooltip */}
-                <div className="absolute right-full mr-3 bg-gray-800 text-white px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+                {/* Tooltip - ADJUSTED FOR LEFT POSITION */}
+                <div className="absolute left-full ml-3 bg-gray-800 text-white px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
                   {option.label}
+                  {/* Arrow pointing left */}
+                  <div className="absolute top-1/2 left-0 transform -translate-x-full -translate-y-1/2 border-4 border-transparent border-r-gray-800"></div>
                 </div>
               </a>
             </div>
@@ -128,11 +130,11 @@ export default function FloatingContactFab() {
         )}
       </div>
 
-      {/* Call-to-Action Tooltip */}
+      {/* Call-to-Action Tooltip - ADJUSTED FOR LEFT POSITION */}
       {!isOpen && (
-        <div className="fixed bottom-6 right-20 bg-gray-800 text-white px-3 py-2 rounded-lg text-sm opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+        <div className="fixed bottom-6 left-20 bg-gray-800 text-white px-3 py-2 rounded-lg text-sm opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none">
           Свържете се веднага!
-          <div className="absolute top-1/2 right-0 transform translate-x-full -translate-y-1/2 border-4 border-transparent border-l-gray-800"></div>
+          <div className="absolute top-1/2 left-0 transform -translate-x-full -translate-y-1/2 border-4 border-transparent border-r-gray-800"></div>
         </div>
       )}
     </>
