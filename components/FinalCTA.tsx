@@ -1,4 +1,4 @@
-// components/FinalCTA.tsx - FIXED VERSION without unescaped quotes
+// components/FinalCTA.tsx - COMPLETE VERSION with Contact Form
 'use client';
 import { siteConfig, getContactLink, getFormattedPhone, getMainEmail } from '../config/site.config';
 
@@ -87,6 +87,109 @@ export default function FinalCTA() {
               <div className="font-bold text-sm">{getMainEmail()}</div>
               <div className="text-xs mt-1 opacity-90">Отговор до 30 мин</div>
             </a>
+          </div>
+
+          {/* CONTACT FORM SECTION - ТОВА ЛИПСВАШЕ! */}
+          <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 mb-12 max-w-2xl mx-auto">
+            <h3 className="text-2xl font-bold mb-6 text-center">
+              📝 Или изпрати бърза заявка:
+            </h3>
+
+            <div className="grid md:grid-cols-2 gap-6 mb-6">
+              {/* Name Field */}
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium mb-2">
+                  Име и фамилия *
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  className="w-full px-4 py-3 rounded-lg bg-white bg-opacity-90 text-gray-900 border border-gray-300 focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition"
+                  placeholder="Вашето име..."
+                />
+              </div>
+
+              {/* Email Field */}
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium mb-2">
+                  Имейл адрес *
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  className="w-full px-4 py-3 rounded-lg bg-white bg-opacity-90 text-gray-900 border border-gray-300 focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition"
+                  placeholder="your@email.com"
+                />
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6 mb-6">
+              {/* Phone Field */}
+              <div>
+                <label htmlFor="phone" className="block text-sm font-medium mb-2">
+                  Телефон
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  className="w-full px-4 py-3 rounded-lg bg-white bg-opacity-90 text-gray-900 border border-gray-300 focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition"
+                  placeholder="+359 8X XXX XXXX"
+                />
+              </div>
+
+              {/* Service Type */}
+              <div>
+                <label htmlFor="service" className="block text-sm font-medium mb-2">
+                  Тип услуга *
+                </label>
+                <select
+                  id="service"
+                  name="service"
+                  required
+                  className="w-full px-4 py-3 rounded-lg bg-white bg-opacity-90 text-gray-900 border border-gray-300 focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition"
+                >
+                  <option value="">Изберете услуга...</option>
+                  <option value="referat">Реферат/Есе (3-15 стр.)</option>
+                  <option value="kursova">Курсова работа (15-30 стр.)</option>
+                  <option value="diplomna">Дипломна работа (40+ стр.)</option>
+                  <option value="prezentacia">Презентация</option>
+                  <option value="drugi">Друго</option>
+                </select>
+              </div>
+            </div>
+
+            {/* Message Field */}
+            <div className="mb-6">
+              <label htmlFor="message" className="block text-sm font-medium mb-2">
+                Описание на проекта *
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows={4}
+                required
+                className="w-full px-4 py-3 rounded-lg bg-white bg-opacity-90 text-gray-900 border border-gray-300 focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition resize-none"
+                placeholder="Разкажете ни за вашия проект: тема, брой страници, срок, специални изисквания..."
+              ></textarea>
+            </div>
+
+            {/* Submit Button */}
+            <div className="text-center">
+              <button
+                type="submit"
+                className="bg-yellow-500 hover:bg-yellow-400 text-blue-900 px-8 py-4 rounded-full font-bold text-lg transition-all duration-200 transform hover:scale-105 shadow-lg"
+              >
+                🚀 Изпрати заявката (Безплатно)
+              </button>
+              <p className="text-sm text-blue-200 mt-3">
+                * Ще получите оферта до 30 минути
+              </p>
+            </div>
           </div>
 
           {/* Urgency Section */}
