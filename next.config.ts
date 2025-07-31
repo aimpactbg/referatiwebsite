@@ -1,8 +1,9 @@
+// File: next.config.ts
+// CORRECTED VERSION: The 'swcMinify' option has been removed as it's default now.
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // This option helps Next.js work better with some styling libraries.
-  swcMinify: true,
 };
 
 module.exports = nextConfig;

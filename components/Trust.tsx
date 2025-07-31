@@ -1,5 +1,5 @@
 // File: components/Trust.tsx
-// This component displays social proof: statistics, testimonials, and trust badges.
+// CORRECTED VERSION with escaped quotes
 
 export default function Trust() {
   return (
@@ -11,8 +11,6 @@ export default function Trust() {
           </h2>
           <p className="mt-4 text-lg text-gray-600">Хиляди студенти ни се довериха. Вижте защо.</p>
         </div>
-
-        {/* Statistics Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mb-20">
           <div>
             <p className="text-5xl font-extrabold text-blue-600">5,000+</p>
@@ -27,26 +25,20 @@ export default function Trust() {
             <p className="mt-2 text-lg font-semibold text-gray-700">Опит в академичното писане</p>
           </div>
         </div>
-
-        {/* Testimonials Section */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
-          {/* Testimonial 1 */}
           <div className="bg-gray-50 p-8 rounded-lg shadow-md">
             <p className="text-gray-700 italic mb-4">&ldquo;Получих курсовата си работа точно навреме и с отлично качество. Професионалният подход и комуникацията бяха на високо ниво.&rdquo;</p>
             <p className="font-bold text-gray-900">— Мария С., студентка по икономика</p>
           </div>
-          {/* Testimonial 2 */}
           <div className="bg-gray-50 p-8 rounded-lg shadow-md">
             <p className="text-gray-700 italic mb-4">&ldquo;Много съм доволен от дипломната си работа. Авторът разбра точно какво искам и резултатът надмина очакванията ми.&rdquo;</p>
             <p className="font-bold text-gray-900">— Георги М., магистър по право</p>
           </div>
-          {/* Testimonial 3 */}
           <div className="bg-gray-50 p-8 rounded-lg shadow-md">
             <p className="text-gray-700 italic mb-4">&ldquo;Бърза доставка, качествено изпълнение и много добра цена. Определено ще препоръчам на колегите си.&rdquo;</p>
             <p className="font-bold text-gray-900">— Анна К., студентка по медицина</p>
           </div>
         </div>
-
         {/* Trust Badges Section */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           <div className="flex flex-col items-center">

@@ -46,7 +46,7 @@ export default function Urgency() {
               <li>Четвъртък: <span className="font-semibold text-green-400">✅ 1 място свободно</span></li>
               <li>Петък: <span className="font-semibold text-green-400">✅ 1 място свободно</span></li>
             </ul>
-            <p className="mt-4 italic">"Резервирай сега, за да гарантираш бързата доставка!"</p>
+            <p className="mt-4 italic">&ldquo;Резервирай сега, за да гарантираш бързата доставка!&rdquo;</p>
           </div>
           {/* Seasonal Rush */}
           <div className="bg-blue-800 p-8 rounded-lg">

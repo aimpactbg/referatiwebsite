@@ -104,7 +104,7 @@ export default function Pricing() {
         {/* Pricing Promise */}
         <div className="bg-gray-800 text-white p-8 rounded-lg text-center">
             <h3 className="text-2xl font-bold mb-4">Нашето обещание за цените</h3>
-            <p className="italic max-w-3xl mx-auto mb-4">"Цената, която ти предлагаме в офертата, е окончателната цена. Никакви скрити такси, никакви неприятни изненади. Качеството винаги съответства на цената."</p>
+            <p className="italic max-w-3xl mx-auto mb-4">&ldquo;Цената, която ти предлагаме в офертата, е окончателната цена. Никакви скрити такси, никакви неприятни изненади. Качеството винаги съответства на цената.&rdquo;</p>
             <p className="font-semibold">При по-евтина оферта от конкуренцията - ние я побеждаваме с 5%!</p>
         </div>
 

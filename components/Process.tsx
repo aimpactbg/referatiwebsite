@@ -14,7 +14,7 @@ export default function Process() {
 
         {/* Steps Timeline */}
         <div className="relative max-w-4xl mx-auto">
-          {/* Vertical line */}
+          {/* Vertical line for desktop view */}
           <div className="absolute left-1/2 -translate-x-1/2 h-full w-0.5 bg-blue-200 hidden md:block"></div>
 
           {/* Step 1: Order */}
@@ -24,7 +24,7 @@ export default function Process() {
                 <h3 className="text-xl font-bold text-blue-600 mb-2">СТЪПКА 1: ПОРЪЧКА</h3>
                 <h4 className="text-lg font-semibold mb-2">📝 Разкажи ни какво ти трябва</h4>
                 <p className="text-gray-600 text-sm mb-4">Попълваш кратък формуляр с детайли за работата, изискванията, темата и желания срок. Прикачваш файлове, ако имаш.</p>
-                <p className="text-xs text-gray-500 italic">"Колкото повече детайли споделиш, толкова по-точна ще бъде работата."</p>
+                <p className="text-xs text-gray-500 italic">&ldquo;Колкото повече детайли споделиш, толкова по-точна ще бъде работата.&rdquo;</p>
               </div>
             </div>
             <div className="absolute left-1/2 -translate-x-1/2 -top-2 -bottom-2 md:relative md:left-auto md:translate-x-0 flex items-center justify-center">
@@ -44,7 +44,7 @@ export default function Process() {
                 <h3 className="text-xl font-bold text-blue-600 mb-2">СТЪПКА 2: ОФЕРТА</h3>
                 <h4 className="text-lg font-semibold mb-2">💰 Получаваш персонализирана оферта</h4>
                 <p className="text-gray-600 text-sm mb-4">Анализираме заявката ти, изчисляваме точната цена и предлагаме реалистичен срок за изпълнение.</p>
-                <p className="text-xs text-gray-500 italic">"Офертата е безплатна и без задължения."</p>
+                <p className="text-xs text-gray-500 italic">&ldquo;Офертата е безплатна и без задължения.&rdquo;</p>
               </div>
             </div>
           </div>
@@ -56,7 +56,7 @@ export default function Process() {
                 <h3 className="text-xl font-bold text-blue-600 mb-2">СТЪПКА 3: ИЗПЪЛНЕНИЕ</h3>
                 <h4 className="text-lg font-semibold mb-2">✍️ Започваме работа веднага</h4>
                 <p className="text-gray-600 text-sm mb-4">Експерт в съответната област поема проекта, провежда изследване и пише оригинален текст според изискванията.</p>
-                <p className="text-xs text-gray-500 italic">"Можеш да следиш прогреса и да общуваш с автора."</p>
+                <p className="text-xs text-gray-500 italic">&ldquo;Можеш да следиш прогреса и да общуваш с автора.&rdquo;</p>
               </div>
             </div>
              <div className="absolute left-1/2 -translate-x-1/2 -top-2 -bottom-2 md:relative md:left-auto md:translate-x-0 flex items-center justify-center">
@@ -76,7 +76,7 @@ export default function Process() {
                 <h3 className="text-xl font-bold text-blue-600 mb-2">СТЪПКА 4: ДОСТАВКА</h3>
                 <h4 className="text-lg font-semibold mb-2">🎯 Получаваш готовата работа</h4>
                 <p className="text-gray-600 text-sm mb-4">Проверяваме за грешки, форматираме и пускаме през антиплагиатски софтуер преди да ти изпратим работата по имейл.</p>
-                <p className="text-xs text-gray-500 italic">"Ако нещо не е наред, правим безплатни корекции."</p>
+                <p className="text-xs text-gray-500 italic">&ldquo;Ако нещо не е наред, правим безплатни корекции.&rdquo;</p>
               </div>
             </div>
           </div>
@@ -107,7 +107,7 @@ export default function Process() {
         {/* Final Call to Action */}
         <div className="mt-16 text-center">
           <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-            "Готов да започнеш? Процесът е толкова лесен, че ще се учудиш защо не си се обърнал към нас по-рано!"
+            &ldquo;Готов да започнеш? Процесът е толкова лесен, че ще се учудиш защо не си се обърнал към нас по-рано!&rdquo;
           </p>
         </div>
       </div>

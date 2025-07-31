@@ -107,7 +107,7 @@ export default function Guarantees() {
         {/* Our Promise */}
         <div className="bg-gray-800 text-white p-8 rounded-lg text-center">
             <h3 className="text-2xl font-bold mb-4">Нашето обещание</h3>
-            <p className="italic max-w-3xl mx-auto mb-4">"Ние не просто пишем текстове - ние създаваме академични работи, които ще те направят горд. Всяка работа носи нашия подпис за качество и професионализъм."</p>
+            <p className="italic max-w-3xl mx-auto mb-4">&ldquo;Ние не просто пишем текстове - ние създаваме академични работи, които ще те направят горд. Всяка работа носи нашия подпис за качество и професионализъм.&rdquo;</p>
             <p className="font-semibold">Ако не си доволен по каквато и да било причина в първите 48 часа - връщаме ти парите без въпроси!</p>
         </div>
       </div>

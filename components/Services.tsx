@@ -79,7 +79,7 @@ export default function Services() {
 
         {/* Section CTA */}
         <div className="text-center">
-            <p className="text-lg text-gray-700 mb-4">"Не виждаш нужната ти услуга? Свържи се с нас - можем да помогнем с всякакъв вид академична работа!"</p>
+            <p className="text-lg text-gray-700 mb-4">&ldquo;Не виждаш нужната ти услуга? Свържи се с нас - можем да помогнем с всякакъв вид академична работа!&rdquo;</p>
             <a href="#pricing" className="text-blue-600 font-bold hover:underline">Виж всички услуги и цени →</a>
         </div>
 
