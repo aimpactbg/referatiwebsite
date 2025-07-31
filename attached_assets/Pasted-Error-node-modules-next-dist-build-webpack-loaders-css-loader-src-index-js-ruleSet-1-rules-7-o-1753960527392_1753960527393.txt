@@ -1,0 +1,24 @@
+Error: ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[7].oneOf[13].use[1]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[7].oneOf[13].use[2]!./styles/globals.css
+Error: Cannot find module 'autoprefixer'
+Require stack:
+- /home/runner/workspace/node_modules/next/dist/build/webpack/config/blocks/css/plugins.js
+- /home/runner/workspace/node_modules/next/dist/build/webpack/config/blocks/css/index.js
+- /home/runner/workspace/node_modules/next/dist/build/webpack/config/index.js
+- /home/runner/workspace/node_modules/next/dist/build/webpack-config.js
+- /home/runner/workspace/node_modules/next/dist/server/dev/hot-reloader-webpack.js
+- /home/runner/workspace/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /home/runner/workspace/node_modules/next/dist/server/lib/router-server.js
+- /home/runner/workspace/node_modules/next/dist/server/lib/start-server.js
+    at Array.map (<anonymous>)
+    at BuildError (webpack-internal:///(pages-dir-browser)/./node_modules/next/dist/client/components/react-dev-overlay/ui/container/build-error.js:43:41)
+    at react-stack-bottom-frame (webpack-internal:///(pages-dir-browser)/./node_modules/react-dom/cjs/react-dom-client.development.js:22429:20)
+    at renderWithHooks (webpack-internal:///(pages-dir-browser)/./node_modules/react-dom/cjs/react-dom-client.development.js:5758:22)
+    at updateFunctionComponent (webpack-internal:///(pages-dir-browser)/./node_modules/react-dom/cjs/react-dom-client.development.js:8019:19)
+    at beginWork (webpack-internal:///(pages-dir-browser)/./node_modules/react-dom/cjs/react-dom-client.development.js:9684:18)
+    at runWithFiberInDEV (webpack-internal:///(pages-dir-browser)/./node_modules/react-dom/cjs/react-dom-client.development.js:544:16)
+    at performUnitOfWork (webpack-internal:///(pages-dir-browser)/./node_modules/react-dom/cjs/react-dom-client.development.js:15045:22)
+    at workLoopSync (webpack-internal:///(pages-dir-browser)/./node_modules/react-dom/cjs/react-dom-client.development.js:14871:41)
+    at renderRootSync (webpack-internal:///(pages-dir-browser)/./node_modules/react-dom/cjs/react-dom-client.development.js:14851:11)
+    at performWorkOnRoot (webpack-internal:///(pages-dir-browser)/./node_modules/react-dom/cjs/react-dom-client.development.js:14335:13)
+    at performWorkOnRootViaSchedulerTask (webpack-internal:///(pages-dir-browser)/./node_modules/react-dom/cjs/react-dom-client.development.js:15932:7)
+    at MessagePort.performWorkUntilDeadline (webpack-internal:///(pages-dir-browser)/./node_modules/scheduler/cjs/scheduler.development.js:44:48)
