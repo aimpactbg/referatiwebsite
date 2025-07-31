@@ -4,7 +4,7 @@ export const siteConfig = {
   name: "Referati.website",
   title: "Професионални Реферати и Курсови Работи",
   description: "Професионални реферати и курсови работи с гарантирана оригиналност",
-  url: "https://www.referati.website",
+  url: "https://referati.website",
 
   // Contact Information
   contact: {
@@ -14,9 +14,7 @@ export const siteConfig = {
       link: "tel:+359000000000"
     },
     email: {
-      main: "info@referati.website",
-      support: "support@referati.website", 
-      orders: "orders@referati.website"
+      orders: "order@referati.website"
     },
     social: {
       viber: "viber://chat?number=+359000000000",
