@@ -1,8 +1,70 @@
-// components/FinalCTA.tsx - COMPLETE VERSION with Contact Form
+// components/FinalCTA.tsx - WITH FORM SUBMISSION LOGIC
 'use client';
+import { useState } from 'react';
 import { siteConfig, getContactLink, getFormattedPhone, getMainEmail } from '../config/site.config';
 
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  service: string;
+  message: string;
+}
+
 export default function FinalCTA() {
+  const [formData, setFormData] = useState<FormData>({
+    name: '',
+    email: '',
+    phone: '',
+    service: '',
+    message: ''
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitStatus('success');
+        // Redirect to thank you page after short delay
+        setTimeout(() => {
+          window.location.href = '/thank-you';
+        }, 1500);
+      } else {
+        setSubmitStatus('error');
+        alert(result.message || 'Възникна грешка при изпращането');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+      alert('Възникна грешка при изпращането. Моля опитайте отново.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-20">
       <div className="container mx-auto px-4">
@@ -21,7 +83,95 @@ export default function FinalCTA() {
             <div className="text-center">
               <div className="text-3xl font-bold text-yellow-300">{siteConfig.stats.completedProjects}+</div>
               <div className="text-blue-200">Завършени проекта</div>
+            {/* Message Field */}
+            <div className="mb-6">
+              <label htmlFor="message" className="block text-sm font-medium mb-2">
+                Описание на проекта *
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows={4}
+                required
+                value={formData.message}
+                onChange={handleInputChange}
+                className="w-full px-4 py-3 rounded-lg bg-white bg-opacity-90 text-gray-900 border border-gray-300 focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition resize-none"
+                placeholder="Разкажете ни за вашия проект: тема, брой страници, срок, специални изисквания..."
+                disabled={isSubmitting}
+              ></textarea>
             </div>
+
+            {/* Submit Button */}
+            <div className="text-center">
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className={`px-8 py-4 rounded-full font-bold text-lg transition-all duration-200 transform shadow-lg ${
+                  isSubmitting
+                    ? 'bg-gray-400 cursor-not-allowed'
+                    : submitStatus === 'success'
+                    ? 'bg-green-500 hover:bg-green-400'
+                    : 'bg-yellow-500 hover:bg-yellow-400 hover:scale-105'
+                } text-blue-900`}
+              >
+                {isSubmitting ? (
+                  <>
+                    <span className="inline-block animate-spin mr-2">⏳</span>
+                    Изпращане...
+                  </>
+                ) : submitStatus === 'success' ? (
+                  <>
+                    <span className="mr-2">✅</span>
+                    Изпратено! Пренасочване...
+                  </>
+                ) : (
+                  <>
+                    🚀 Изпрати заявката (Безплатно)
+                  </>
+                )}
+              </button>
+              <p className="text-sm text-blue-200 mt-3">
+                * Ще получите оферта до 30 минути
+              </p>
+            </div>
+          </form>
+
+          {/* Urgency Section */}
+          <div className="bg-red-600 bg-opacity-20 border border-red-400 rounded-lg p-6 mb-8">
+            <h3 className="text-2xl font-bold mb-4 text-yellow-300">
+              🔥 Спомни си:
+            </h3>
+            <div className="grid md:grid-cols-3 gap-4 text-left">
+              <div className="flex items-center">
+                <span className="text-red-300 mr-2">❌</span>
+                <span>Ако чакаш още: Сроковете стават невъзможни</span>
+              </div>
+              <div className="flex items-center">
+                <span className="text-red-300 mr-2">❌</span>
+                <span>Ако се колебаеш: Губиш 15% отстъпката</span>
+              </div>
+              <div className="flex items-center">
+                <span className="text-green-300 mr-2">✅</span>
+                <span>Ако действаш сега: Проблемът ти е решен за 30 минути</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Final Message */}
+          <div className="text-center">
+            <p className="text-lg text-blue-100 mb-6">
+              Всеки изгубен момент намалява шансовете ти за специалните отстъпки, най-добрите автори и спазване на желания срок.
+            </p>
+
+            <div className="bg-yellow-500 text-blue-900 px-8 py-4 rounded-full inline-block font-bold text-lg">
+              ⚡ Започни сега - спести си стреса!
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
             <div className="text-center">
               <div className="text-3xl font-bold text-yellow-300">{siteConfig.stats.satisfiedClients}%</div>
               <div className="text-blue-200">Доволни клиенти</div>
@@ -89,8 +239,8 @@ export default function FinalCTA() {
             </a>
           </div>
 
-          {/* CONTACT FORM SECTION - ТОВА ЛИПСВАШЕ! */}
-          <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 mb-12 max-w-2xl mx-auto">
+          {/* CONTACT FORM SECTION WITH SUBMISSION LOGIC */}
+          <form onSubmit={handleSubmit} className="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 mb-12 max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold mb-6 text-center">
               📝 Или изпрати бърза заявка:
             </h3>
@@ -106,8 +256,11 @@ export default function FinalCTA() {
                   id="name"
                   name="name"
                   required
+                  value={formData.name}
+                  onChange={handleInputChange}
                   className="w-full px-4 py-3 rounded-lg bg-white bg-opacity-90 text-gray-900 border border-gray-300 focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition"
                   placeholder="Вашето име..."
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -121,8 +274,11 @@ export default function FinalCTA() {
                   id="email"
                   name="email"
                   required
+                  value={formData.email}
+                  onChange={handleInputChange}
                   className="w-full px-4 py-3 rounded-lg bg-white bg-opacity-90 text-gray-900 border border-gray-300 focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition"
                   placeholder="your@email.com"
+                  disabled={isSubmitting}
                 />
               </div>
             </div>
@@ -137,8 +293,11 @@ export default function FinalCTA() {
                   type="tel"
                   id="phone"
                   name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
                   className="w-full px-4 py-3 rounded-lg bg-white bg-opacity-90 text-gray-900 border border-gray-300 focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition"
                   placeholder="+359 8X XXX XXXX"
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -151,7 +310,10 @@ export default function FinalCTA() {
                   id="service"
                   name="service"
                   required
+                  value={formData.service}
+                  onChange={handleInputChange}
                   className="w-full px-4 py-3 rounded-lg bg-white bg-opacity-90 text-gray-900 border border-gray-300 focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition"
+                  disabled={isSubmitting}
                 >
                   <option value="">Изберете услуга...</option>
                   <option value="referat">Реферат/Есе (3-15 стр.)</option>
@@ -162,69 +324,3 @@ export default function FinalCTA() {
                 </select>
               </div>
             </div>
-
-            {/* Message Field */}
-            <div className="mb-6">
-              <label htmlFor="message" className="block text-sm font-medium mb-2">
-                Описание на проекта *
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows={4}
-                required
-                className="w-full px-4 py-3 rounded-lg bg-white bg-opacity-90 text-gray-900 border border-gray-300 focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition resize-none"
-                placeholder="Разкажете ни за вашия проект: тема, брой страници, срок, специални изисквания..."
-              ></textarea>
-            </div>
-
-            {/* Submit Button */}
-            <div className="text-center">
-              <button
-                type="submit"
-                className="bg-yellow-500 hover:bg-yellow-400 text-blue-900 px-8 py-4 rounded-full font-bold text-lg transition-all duration-200 transform hover:scale-105 shadow-lg"
-              >
-                🚀 Изпрати заявката (Безплатно)
-              </button>
-              <p className="text-sm text-blue-200 mt-3">
-                * Ще получите оферта до 30 минути
-              </p>
-            </div>
-          </div>
-
-          {/* Urgency Section */}
-          <div className="bg-red-600 bg-opacity-20 border border-red-400 rounded-lg p-6 mb-8">
-            <h3 className="text-2xl font-bold mb-4 text-yellow-300">
-              🔥 Спомни си:
-            </h3>
-            <div className="grid md:grid-cols-3 gap-4 text-left">
-              <div className="flex items-center">
-                <span className="text-red-300 mr-2">❌</span>
-                <span>Ако чакаш още: Сроковете стават невъзможни</span>
-              </div>
-              <div className="flex items-center">
-                <span className="text-red-300 mr-2">❌</span>
-                <span>Ако се колебаеш: Губиш 15% отстъпката</span>
-              </div>
-              <div className="flex items-center">
-                <span className="text-green-300 mr-2">✅</span>
-                <span>Ако действаш сега: Проблемът ти е решен за 30 минути</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Final Message */}
-          <div className="text-center">
-            <p className="text-lg text-blue-100 mb-6">
-              Всеки изгубен момент намалява шансовете ти за специалните отстъпки, най-добрите автори и спазване на желания срок.
-            </p>
-
-            <div className="bg-yellow-500 text-blue-900 px-8 py-4 rounded-full inline-block font-bold text-lg">
-              ⚡ Започни сега - спести си стреса!
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
