@@ -2,6 +2,7 @@
 'use client';
 import { useState } from 'react';
 import { siteConfig, getContactLink, getFormattedPhone, getMainEmail } from '../config/site.config';
+import FileUpload from './FileUpload';
 
 interface FormData {
   name: string;
@@ -9,6 +10,7 @@ interface FormData {
   phone: string;
   service: string;
   message: string;
+  files: File[];
 }
 
 export default function FinalCTA() {
@@ -17,9 +19,9 @@ export default function FinalCTA() {
     email: '',
     phone: '',
     service: '',
-    message: ''
-  });
-
+    message: '',
+    files: []
+});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
@@ -31,6 +33,14 @@ export default function FinalCTA() {
     }));
   };
 
+  const handleFilesChange = (files: File[]) => {
+    setFormData(prev => ({
+      ...prev,
+      files: files
+    }));
+  };
+
+  // Fixed handleSubmit function
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -51,19 +61,59 @@ export default function FinalCTA() {
       return;
     }
 
-    setSubmitStatus('success');
+    try {
+      // Prepare multipart form data for file upload
+      const formDataToSend = new FormData();
+      formDataToSend.append('name', formData.name);
+      formDataToSend.append('email', formData.email);
+      formDataToSend.append('phone', formData.phone);
+      formDataToSend.append('service', formData.service);
+      formDataToSend.append('subject', `Заявка за ${formData.service}`);
+      formDataToSend.append('message', formData.message);
 
-    // Open email client directly - WORKS 100%
-    const emailBody = `Здравейте,%0A%0AИмам заявка за ${formData.service}:%0A%0AОписание: ${formData.message}%0A%0AMоят контакт:%0AИме: ${formData.name}%0AИмейл: ${formData.email}%0AТелефон: ${formData.phone || 'Не е посочен'}`;
+      // Add files with proper naming
+      formData.files.forEach((file, index) => {
+        formDataToSend.append(`file_${index}`, file);
+      });
+      formDataToSend.append('fileCount', formData.files.length.toString());
 
-    window.open(`mailto:orders@referati.website?subject=Заявка за ${formData.service} - ${formData.name}&body=${emailBody}`);
+      // Send to our API endpoint with multipart data
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        body: formDataToSend, // Note: No Content-Type header for FormData
+      });
 
-    // Redirect to thank you page
-    setTimeout(() => {
-      window.location.href = '/thank-you';
-    }, 1000);
+      const result = await response.json();
 
-    setIsSubmitting(false);
+      if (response.ok && result.success) {
+        setSubmitStatus('success');
+
+        // Clear form including files
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          service: '',
+          message: '',
+          files: []
+        });
+
+        // Redirect to thank you page
+        setTimeout(() => {
+          window.location.href = '/thank-you';
+        }, 1500);
+      } else {
+        console.error('API Error:', result);
+        alert(`Възникна грешка при изпращането: ${result.message || 'Неизвестна грешка'}. Моля опитайте отново или се свържете с нас директно.`);
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Network Error:', error);
+      alert('Възникна грешка при връзката. Моля проверете интернет връзката и опитайте отново.');
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -256,7 +306,17 @@ export default function FinalCTA() {
               ></textarea>
             </div>
 
-            {/* Submit Button */}
+            {/* File Upload Section */}
+            <div className="col-span-2">
+              <FileUpload 
+                onFilesChange={handleFilesChange}
+                maxFiles={5}
+                maxSizePerFile={5}
+                maxTotalSize={20}
+              />
+            </div>
+
+            {/* Updated Submit Button - REPLACE THE EXISTING BUTTON */}
             <div className="text-center">
               <button
                 type="submit"
@@ -272,21 +332,33 @@ export default function FinalCTA() {
                 {isSubmitting ? (
                   <>
                     <span className="inline-block animate-spin mr-2">⏳</span>
-                    Изпращане...
+                    {formData.files.length > 0 
+                      ? `Качване на ${formData.files.length} файла...` 
+                      : 'Изпращане...'
+                    }
                   </>
                 ) : submitStatus === 'success' ? (
                   <>
                     <span className="mr-2">✅</span>
-                    Изпратено! Пренасочване...
+                    {formData.files.length > 0 
+                      ? `Изпратено с ${formData.files.length} файла! Пренасочване...`
+                      : 'Изпратено! Пренасочване...'
+                    }
                   </>
                 ) : (
                   <>
-                    🚀 Изпрати заявката (Безплатно)
+                    🚀 Изпрати заявката 
+                    {formData.files.length > 0 && (
+                      <span className="ml-2 text-sm">({formData.files.length} файла)</span>
+                    )}
                   </>
                 )}
               </button>
               <p className="text-sm text-blue-200 mt-3">
                 * Ще получите оферта до 30 минути
+                {formData.files.length > 0 && (
+                  <span className="block mt-1">📎 Файловете ще бъдат анализирани и включени в офертата</span>
+                )}
               </p>
             </div>
           </form>
