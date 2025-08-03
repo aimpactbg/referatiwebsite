@@ -5,6 +5,7 @@ import { seoConfig } from '../config/seo.config';
 // Component imports
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
+import ReferatiAboutServices from '../components/AboutServices';
 import Trust from '../components/Trust';
 import ProblemSolution from '../components/ProblemSolution';
 import Services from '../components/Services';
