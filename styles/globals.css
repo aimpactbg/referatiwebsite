@@ -1,19 +1,18 @@
-/* styles/globals.css - EMERGENCY RESTORE - Working Version */
+/* styles/globals.css - Project-Specific Customizations & Brand Integration */
 
-/* Import Tailwind CSS */
+/* Import Tailwind CSS - Clean v4 syntax */
 @import "tailwindcss";
 
-/* Emergency CSS for immediate visual fix */
+/* Brand Colors as CSS Custom Properties */
 :root {
-  /* Ensure design system colors are available */
-  --color-primary: #F73859;
-  --color-secondary: #E5D352;
-  --color-accent: #540D6E;
-  --color-success: #00BFB2;
-  --color-dark: #030301;
+  --color-primary: #F73859;        /* Red brand color */
+  --color-secondary: #E5D352;      /* Yellow brand color */
+  --color-accent: #540D6E;         /* Purple brand color */
+  --color-success: #00BFB2;        /* Success green */
+  --color-dark: #030301;           /* Dark color */
 }
 
-/* Global Reset */
+/* Global Reset - Essential only */
 * {
   margin: 0;
   padding: 0;
@@ -27,16 +26,11 @@ body {
   color: #1f2937;
 }
 
-/* Ensure Tailwind classes work */
-.container {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
+/* =================================================================== */
+/* BRAND COLOR CLASSES - Critical for components */
+/* =================================================================== */
 
-/* Primary Color Classes */
+/* Primary Brand Color */
 .text-primary {
   color: var(--color-primary);
 }
@@ -45,6 +39,28 @@ body {
   background-color: var(--color-primary);
 }
 
+.hover\:text-primary:hover {
+  color: var(--color-primary);
+}
+
+.hover\:bg-primary:hover {
+  background-color: var(--color-primary);
+}
+
+.border-primary {
+  border-color: var(--color-primary);
+}
+
+/* Primary with Opacity - Critical for Navbar */
+.bg-primary\/10 {
+  background-color: rgb(247 56 89 / 0.1);
+}
+
+.bg-primary\/20 {
+  background-color: rgb(247 56 89 / 0.2);
+}
+
+/* Secondary Brand Color */
 .text-secondary {
   color: var(--color-secondary);
 }
@@ -53,6 +69,7 @@ body {
   background-color: var(--color-secondary);
 }
 
+/* Success Color */
 .text-success {
   color: var(--color-success);
 }
@@ -61,359 +78,110 @@ body {
   background-color: var(--color-success);
 }
 
-/* Gradient Classes */
-.bg-gradient-to-r {
-  background-image: linear-gradient(to right, var(--tw-gradient-stops));
-}
+/* =================================================================== */
+/* GRADIENT CLASSES - Critical for Hero & CTAs */
+/* =================================================================== */
 
+/* Primary Gradients */
 .from-primary {
   --tw-gradient-from: var(--color-primary);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(247, 56, 89, 0));
+  --tw-gradient-to: rgb(247 56 89 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
 .to-secondary {
   --tw-gradient-to: var(--color-secondary);
 }
 
+.via-primary {
+  --tw-gradient-to: rgb(247 56 89 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--color-primary), var(--tw-gradient-to);
+}
+
+/* Background Gradients for Hero */
 .from-slate-900 {
   --tw-gradient-from: #0f172a;
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(15, 23, 42, 0));
+  --tw-gradient-to: rgb(15 23 42 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
 .via-blue-900 {
-  --tw-gradient-stops: var(--tw-gradient-from), #1e3a8a, var(--tw-gradient-to, rgba(30, 58, 138, 0));
+  --tw-gradient-to: rgb(30 58 138 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), #1e3a8a, var(--tw-gradient-to);
 }
 
 .to-indigo-900 {
   --tw-gradient-to: #312e81;
 }
 
-/* Layout Classes */
-.min-h-screen {
-  min-height: 100vh;
+/* =================================================================== */
+/* TEXT GRADIENT EFFECTS - For Hero headlines */
+/* =================================================================== */
+
+.text-transparent {
+  color: transparent;
 }
 
-.relative {
-  position: relative;
+.bg-clip-text {
+  background-clip: text;
+  -webkit-background-clip: text;
 }
 
-.absolute {
-  position: absolute;
+/* =================================================================== */
+/* GROUP HOVER STATES - For interactive elements */
+/* =================================================================== */
+
+.group:hover .group-hover\:bg-primary {
+  background-color: var(--color-primary);
 }
 
-.inset-0 {
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
-.grid {
-  display: grid;
-}
-
-.flex {
-  display: flex;
-}
-
-.items-center {
-  align-items: center;
-}
-
-.justify-center {
-  justify-content: center;
-}
-
-.text-center {
-  text-align: center;
-}
-
-/* Typography Classes */
-.text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
-}
-
-.text-5xl {
-  font-size: 3rem;
-  line-height: 1;
-}
-
-.text-6xl {
-  font-size: 3.75rem;
-  line-height: 1;
-}
-
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-}
-
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-}
-
-.text-sm {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-}
-
-.text-xs {
-  font-size: 0.75rem;
-  line-height: 1rem;
-}
-
-.font-bold {
-  font-weight: 700;
-}
-
-.font-semibold {
-  font-weight: 600;
-}
-
-.font-medium {
-  font-weight: 500;
-}
-
-/* Color Classes */
-.text-white {
+.group:hover .group-hover\:text-white {
   color: #ffffff;
 }
 
-.text-gray-300 {
-  color: #d1d5db;
+.group:hover .group-hover\:text-primary {
+  color: var(--color-primary);
 }
 
-.text-gray-400 {
-  color: #9ca3af;
+/* =================================================================== */
+/* BACKDROP & EFFECTS - For Navbar and overlays */
+/* =================================================================== */
+
+.backdrop-blur-sm {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
-.text-gray-600 {
-  color: #4b5563;
+.bg-white\/95 {
+  background-color: rgb(255 255 255 / 0.95);
 }
 
-.text-gray-700 {
-  color: #374151;
+.bg-black\/40 {
+  background-color: rgb(0 0 0 / 0.4);
 }
 
-.text-gray-900 {
-  color: #111827;
+/* =================================================================== */
+/* ANIMATION & TRANSITION UTILITIES */
+/* =================================================================== */
+
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
 
-.bg-white {
-  background-color: #ffffff;
+.duration-300 {
+  transition-duration: 300ms;
 }
 
-.bg-black {
-  background-color: #000000;
+.hover\:scale-105:hover {
+  transform: scale(1.05);
 }
 
-/* Spacing Classes */
-.p-4 {
-  padding: 1rem;
+.hover\:shadow-lg:hover {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05);
 }
 
-.p-8 {
-  padding: 2rem;
-}
-
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.py-4 {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
-.px-8 {
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
-.py-20 {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-}
-
-.mb-6 {
-  margin-bottom: 1.5rem;
-}
-
-.mb-8 {
-  margin-bottom: 2rem;
-}
-
-.mt-1 {
-  margin-top: 0.25rem;
-}
-
-.mr-2 {
-  margin-right: 0.5rem;
-}
-
-.ml-2 {
-  margin-left: 0.5rem;
-}
-
-/* Border Classes */
-.rounded-lg {
-  border-radius: 0.5rem;
-}
-
-.rounded-xl {
-  border-radius: 0.75rem;
-}
-
-.rounded-2xl {
-  border-radius: 1rem;
-}
-
-.rounded-full {
-  border-radius: 9999px;
-}
-
-.border {
-  border-width: 1px;
-}
-
-.border-2 {
-  border-width: 2px;
-}
-
-.border-gray-300 {
-  border-color: #d1d5db;
-}
-
-.border-white {
-  border-color: #ffffff;
-}
-
-/* Shadow Classes */
-.shadow-lg {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
-
-.shadow-2xl {
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-}
-
-/* Width/Height Classes */
-.w-full {
-  width: 100%;
-}
-
-.w-6 {
-  width: 1.5rem;
-}
-
-.w-4 {
-  width: 1rem;
-}
-
-.w-10 {
-  width: 2.5rem;
-}
-
-.h-6 {
-  height: 1.5rem;
-}
-
-.h-4 {
-  height: 1rem;
-}
-
-.h-10 {
-  height: 2.5rem;
-}
-
-/* Responsive Classes */
-@media (min-width: 1024px) {
-  .lg\\:grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .lg\\:text-left {
-    text-align: left;
-  }
-
-  .lg\\:text-6xl {
-    font-size: 3.75rem;
-    line-height: 1;
-  }
-
-  .lg\\:pl-8 {
-    padding-left: 2rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .md\\:grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .md\\:text-5xl {
-    font-size: 3rem;
-    line-height: 1;
-  }
-}
-
-/* Grid Classes */
-.grid-cols-3 {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.gap-4 {
-  gap: 1rem;
-}
-
-.gap-12 {
-  gap: 3rem;
-}
-
-/* Flexbox Classes */
-.flex-col {
-  flex-direction: column;
-}
-
-.space-x-3 > * + * {
-  margin-left: 0.75rem;
-}
-
-.space-y-6 > * + * {
-  margin-top: 1.5rem;
-}
-
-/* Button Styles */
-button, .btn {
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-button:hover, .btn:hover {
-  transform: translateY(-1px);
-}
-
-/* Form Styles */
-input, select, textarea {
-  transition: all 0.3s ease;
-}
-
-input:focus, select:focus, textarea:focus {
-  outline: none;
-  ring: 2px;
-  ring-color: var(--color-primary);
-  border-color: transparent;
-}
-
-/* Animation Classes */
 .animate-pulse {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
@@ -427,7 +195,7 @@ input:focus, select:focus, textarea:focus {
     opacity: 1;
   }
   50% {
-    opacity: .5;
+    opacity: 0.5;
   }
 }
 
@@ -437,22 +205,54 @@ input:focus, select:focus, textarea:focus {
     animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
   }
   50% {
-    transform: translateY(0);
+    transform: none;
     animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   }
 }
 
-/* Utility Classes */
+/* =================================================================== */
+/* UTILITY CLASSES - Essential missing pieces */
+/* =================================================================== */
+
 .opacity-70 {
   opacity: 0.7;
 }
 
-.transition-all {
-  transition: all 0.3s ease;
+.z-10 {
+  z-index: 10;
 }
 
-.duration-300 {
-  transition-duration: 300ms;
+.z-50 {
+  z-index: 50;
+}
+
+.sticky {
+  position: sticky;
+}
+
+.top-0 {
+  top: 0;
+}
+
+.bottom-8 {
+  bottom: 2rem;
+}
+
+.left-1\/2 {
+  left: 50%;
+}
+
+.transform {
+  transform: translate(var(--tw-translate-x, 0), var(--tw-translate-y, 0)) rotate(var(--tw-rotate, 0)) skewX(var(--tw-skew-x, 0)) skewY(var(--tw-skew-y, 0)) scaleX(var(--tw-scale-x, 1)) scaleY(var(--tw-scale-y, 1));
+}
+
+.-translate-x-1\/2 {
+  --tw-translate-x: -50%;
+  transform: translate(var(--tw-translate-x, 0), var(--tw-translate-y, 0)) rotate(var(--tw-rotate, 0)) skewX(var(--tw-skew-x, 0)) skewY(var(--tw-skew-y, 0)) scaleX(var(--tw-scale-x, 1)) scaleY(var(--tw-scale-y, 1));
+}
+
+.min-h-screen {
+  min-height: 100vh;
 }
 
 .overflow-hidden {
@@ -467,87 +267,84 @@ input:focus, select:focus, textarea:focus {
   line-height: 1.625;
 }
 
-/* Text Gradient */
-.text-transparent {
-  color: transparent;
+/* =================================================================== */
+/* RESPONSIVE UTILITIES - Only if needed */
+/* =================================================================== */
+
+@media (min-width: 1024px) {
+  .lg\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .lg\:text-left {
+    text-align: left;
+  }
+
+  .lg\:text-6xl {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+
+  .lg\:pl-8 {
+    padding-left: 2rem;
+  }
+
+  .lg\:py-24 {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  .lg\:justify-start {
+    justify-content: flex-start;
+  }
 }
 
-.bg-clip-text {
-  background-clip: text;
-  -webkit-background-clip: text;
+@media (min-width: 768px) {
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .md\:text-5xl {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .md\:flex {
+    display: flex;
+  }
+
+  .md\:inline-flex {
+    display: inline-flex;
+  }
 }
 
-/* Backdrop Blur */
-.backdrop-blur-sm {
-  backdrop-filter: blur(4px);
+@media (min-width: 640px) {
+  .sm\:flex-row {
+    flex-direction: row;
+  }
+
+  .sm\:block {
+    display: block;
+  }
 }
 
-/* Z-index */
-.z-10 {
-  z-index: 10;
-}
+/* =================================================================== */
+/* FORM STYLES - For better UX */
+/* =================================================================== */
 
-.z-50 {
-  z-index: 50;
-}
-
-/* Position utilities */
-.top-0 {
-  top: 0;
-}
-
-.bottom-8 {
-  bottom: 2rem;
-}
-
-.left-1\/2 {
-  left: 50%;
-}
-
-.transform {
-  transform: var(--tw-transform);
-}
-
-.-translate-x-1\/2 {
-  --tw-translate-x: -50%;
-  transform: translateX(-50%);
-}
-
-/* Focus states */
-.focus\\:outline-none:focus {
+input:focus,
+select:focus,
+textarea:focus {
   outline: none;
-}
-
-.focus\\:ring-2:focus {
   box-shadow: 0 0 0 2px var(--color-primary);
-}
-
-.focus\\:border-transparent:focus {
   border-color: transparent;
 }
 
-/* Disabled states */
-.disabled\\:opacity-50:disabled {
+button {
+  cursor: pointer;
+}
+
+button:disabled {
   opacity: 0.5;
-}
-
-.disabled\\:cursor-not-allowed:disabled {
   cursor: not-allowed;
-}
-
-/* Hover states */
-.hover\\:shadow-lg:hover {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
-
-.hover\\:scale-105:hover {
-  transform: scale(1.05);
-}
-
-.hover\\:bg-white:hover {
-  background-color: #ffffff;
-}
-
-.hover\\:text-slate-900:hover {
-  color: #0f172a;
 }

@@ -1,18 +1,11 @@
 // pages/_app.tsx - WORKING VERSION RESTORE
-import '../design-system/styles.css';
-import '../styles/globals.css';
-import type { AppProps } from 'next/app';
-import Script from 'next/script';
-import { useEffect } from 'react';
-import { initializeDesignSystem } from '../design-system';
+import "../design-system/styles.css";
+import type { AppProps } from "next/app";
+import Script from "next/script";
+import { useEffect } from "react";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
-
-  // Initialize design system on app load
-  useEffect(() => {
-    initializeDesignSystem();
-  }, []);
 
   return (
     <>
