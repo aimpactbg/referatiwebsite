@@ -1,4 +1,5 @@
-// components/Hero.tsx - FIXED VERSION with Object Stats Support
+// components/Hero.tsx - CORRECTED VERSION with correct property names from siteConfig
+
 import { useState, useEffect } from "react";
 import {
   siteConfig,
@@ -36,19 +37,19 @@ export default function Hero() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Convert stats object to array for display
+  // ✅ FIX: Using correct property names from siteConfig
   const statsArray = [
     {
-      number: siteConfig.stats?.completedProjects || "5,000+",
+      number: siteConfig.stats?.projects || "5,000+",
       label: "Завършени проекта",
     },
     {
-      number: siteConfig.stats?.satisfiedClients || "98%",
+      number: siteConfig.stats?.satisfaction || "98%",
       label: "Доволни клиенти",
     },
     {
-      number: siteConfig.stats?.averageRating || "4.9/5",
-      label: "Средна оценка",
+      number: siteConfig.stats?.support || "24/7",
+      label: "Поддръжка",
     },
   ];
 
@@ -216,7 +217,7 @@ export default function Hero() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <a
-                href="#final-cta"
+                href="#contact"
                 className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300"
               >
                 <span>Виж всички услуги</span>
