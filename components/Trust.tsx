@@ -1,5 +1,4 @@
-// components/Trust.tsx - Integrated with the central design system
-// and updated with the latest Tailwind CSS syntax
+// components/Trust.tsx - Corrected version with escaped quotes for ESLint
 
 import React from "react";
 import { siteConfig } from "../config/site.config";
@@ -10,7 +9,7 @@ export default function Trust() {
     {
       value: siteConfig.stats.satisfaction,
       label: "Доволни студенти",
-      icon: "😊",
+      icon: "�",
     },
     { value: siteConfig.stats.support, label: "Поддръжка", icon: "🕐" },
     { value: siteConfig.stats.originality, label: "Оригиналност", icon: "✨" },
@@ -37,16 +36,12 @@ export default function Trust() {
             {stats.map((stat, index) => (
               <div
                 key={index}
-                // Промяна: hover:border-red-200 -> hover:border-primary-200
                 className="bg-white rounded-2xl p-6 lg:p-8 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 border border-gray-100 hover:border-primary-200 group"
               >
                 <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
                   {stat.icon}
                 </div>
-                <div
-                  // Промяна: group-hover:text-red-600 -> group-hover:text-primary
-                  className="text-3xl lg:text-4xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors"
-                >
+                <div className="text-3xl lg:text-4xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">
                   {stat.value}
                 </div>
                 <p className="text-gray-600 font-medium">{stat.label}</p>
@@ -65,7 +60,6 @@ export default function Trust() {
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}
-                // Промяна: hover:border-yellow-200 -> hover:border-secondary-200
                 className="bg-white rounded-2xl p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-secondary-200 group"
               >
                 {/* Rating Stars */}
@@ -73,7 +67,6 @@ export default function Trust() {
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <svg
                       key={i}
-                      // Промяна: text-yellow-400 -> text-secondary
                       className="w-5 h-5 text-secondary mr-1"
                       fill="currentColor"
                       viewBox="0 0 20 20"
@@ -83,16 +76,14 @@ export default function Trust() {
                   ))}
                 </div>
 
+                {/* ✅ FIX: Replaced quotes with &quot; to fix ESLint error */}
                 <p className="text-gray-700 mb-6 leading-relaxed italic">
-                  "{testimonial.text}"
+                  &quot;{testimonial.text}&quot;
                 </p>
 
                 {/* Author Info */}
                 <div className="flex items-center">
-                  <div
-                    // Промяна: Градиентът е заменен с цветове от дизайн системата
-                    className="w-12 h-12 bg-gradient-to-br from-accent to-primary rounded-full flex items-center justify-center text-white font-bold mr-4 group-hover:scale-110 transition-transform duration-300"
-                  >
+                  <div className="w-12 h-12 bg-gradient-to-br from-accent to-primary rounded-full flex items-center justify-center text-white font-bold mr-4 group-hover:scale-110 transition-transform duration-300">
                     {testimonial.avatar}
                   </div>
                   <div>
@@ -123,10 +114,7 @@ export default function Trust() {
                 <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
                   {badge.icon}
                 </div>
-                <h4
-                  // Промяна: group-hover:text-red-600 -> group-hover:text-primary
-                  className="font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors"
-                >
+                <h4 className="font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">
                   {badge.title}
                 </h4>
                 <p className="text-sm text-gray-600 leading-relaxed">
@@ -139,7 +127,7 @@ export default function Trust() {
 
         {/* Social Proof Numbers */}
         <div className="mt-16 text-center">
-          <div className="bg-gradient-brand debug-border rounded-2xl p-8 lg:p-12 text-white">
+          <div className="bg-gradient-brand rounded-2xl p-8 lg:p-12 text-white">
             <h3 className="text-2xl lg:text-3xl font-bold mb-4">
               Присъедини се към хилядите успешни студенти
             </h3>
